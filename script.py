@@ -10,16 +10,16 @@ def resolver_sistema():
     b = np.array([4, 1, 1])
 
     # Resolver el sistema Ax = b
-try:
-    x = np.linalg.solve(A, b)
-    print("Solución del sistema:")
-    for i, valor in enumerate(x, start=1):
-        print(f"x{i} = {valor :. 4f}")
-    return x
+    try:
+        x = np.linalg.solve(A, b)
+        print("Solución del sistema:")
+        for i, valor in enumerate(x, start=1):
+            print(f"x{i} = {valor:.4f}")
+        return x
 
-except np.linalg.LinAlgError:
-    print("El sistema no tiene solución o tiene infinitas soluciones.")
-    return None
+    except np.linalg.LinAlgError:
+        print("El sistema no tiene solución o tiene infinitas soluciones.")
+        return None
 
 def graficar_soluciones(soluciones):
     if soluciones is not None:
@@ -33,7 +33,7 @@ def graficar_soluciones(soluciones):
         plt.ylabel("Valores")
         plt.grid(axis='y', linestyle='-', alpha=0.7)
 
-# Guardar el gráfico como imagen
+        # Guardar el gráfico como imagen
         plt.savefig("soluciones.png")
         plt.close()
         print("Gráfico guardado como 'soluciones.png'")
@@ -49,7 +49,7 @@ def guardar_resultados_csv(soluciones):
             escritor = csv.writer(archivo)
             escritor.writerow(["Variable", "Valor"])
             for i, valor in enumerate(soluciones, start=1):
-                escritor.writerow([f"x{i}", f"{valor :. 4f}"])
+                escritor.writerow([f"x{i}", f"{valor:.4f}"])
         print("Resultados guardados en 'resultados.csv'")
     else:
         print("No se pueden guardar los resultados debido a la falta de soluciones.")
