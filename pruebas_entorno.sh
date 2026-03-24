@@ -19,8 +19,4 @@ else
     echo "Prueba fallida"
 fi
 
-# borrar archivos generados
-rm resultados.csv
-rm soluciones.png
-
 # fin del script
